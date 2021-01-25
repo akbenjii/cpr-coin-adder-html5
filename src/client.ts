@@ -19,8 +19,6 @@ module.exports = class Penguin {
 	isNum: any;
 	connected: boolean = false;
 	debug: boolean;
-	latestVersion: string;
-	version: string;
 
 	constructor(userName: string, password: string) {
 		this.userName = userName;

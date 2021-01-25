@@ -1,6 +1,6 @@
 <h1 align="center">💰 CPR Coin Adder HTML5 💰 </h1>
 
-<p align="center"><img src="https://i.imgur.com/w9LznP0_d.webp?maxwidth=760&fidelity=grand" /></p>
+<p align="center"><img src="https://i.imgur.com/MpkqqOi.png" /></p>
 
 
 # Prerequisites

@@ -1,0 +1,18 @@
+{
+  "files": ["src/client.ts"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es5",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+	"noImplicitAny":false
+	
+  },
+  "typeRoots": [
+	  "./typings",
+	  "../node_modules/@types"
+	],
+  "lib": ["es2015"]
+}

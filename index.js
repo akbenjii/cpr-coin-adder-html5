@@ -21,7 +21,10 @@ client.debug = false;
     });
 
     client.banner();
-    if(result.body.version !== version) {
+    if(result.body.version === 'm') {
+        console.log(c`{redBright.bold Under Maintenance [cpr gay]}`)
+        return console.log(c`{redBright.bold Join the supprot discord @ : https://discord.gg/CJ68DGV67J}`)
+    } else if(result.body.version !== version) {
         console.log(c`            {redBright Running Coin Adder} {redBright.bold v${version}}{redBright . [OUTDATED]}\n`);
         console.log(c`{redBright.bold Get the new version at https://github.com/akbenjii/cpr-coin-adder-html5}`);
         return console.log(c`{redBright.bold Join the supprot discord @ : https://discord.gg/CJ68DGV67J}`)

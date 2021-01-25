@@ -1,0 +1,42 @@
+{
+  "name": "cpr-coin-adder-html5",
+  "version": "1.0.0",
+  "description": "add coins to your cpr account",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/akbenjii/cpr-coin-adder-html5"
+  },
+  "keywords": [
+    "cpr",
+    "club",
+    "penguin",
+    "cprewritten",
+    "coins"
+  ],
+  "author": "benji",
+  "license": "GPL-2.0-only",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.22",
+    "@types/ws": "^7.4.0",
+    "chalk": "^4.1.0",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "javascript-obfuscator": "^2.10.3",
+    "md5-typescript": "^1.0.5",
+    "msgpackr": "^1.1.1",
+    "phin": "^3.5.1",
+    "prompt-sync": "^4.2.0",
+    "vinyl-sourcemaps-apply": "^0.2.1",
+    "ws": "^7.4.2"
+  }
+}

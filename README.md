@@ -6,7 +6,7 @@
 # Prerequisites
 ```
 1. Download or Clone the repositiory:
-https://github.com/akbenjii/cpr-coin-adder-html5.git
+git clone https://github.com/akbenjii/cpr-coin-adder-html5.git
 2. Make sure you have node.js installed (v.12.0.0 or higher):
 https://nodejs.org/en/
 ```

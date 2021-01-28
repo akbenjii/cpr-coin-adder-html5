@@ -1,6 +1,8 @@
 import chalk from 'chalk';
 import { Md5 } from 'Md5-typescript';
 import { Packr } from 'msgpackr';
+
+import CryptoUtils from '../dist/CryptoUtils';
 import WebSocket from 'ws';
 
 module.exports = class Penguin {
@@ -18,13 +20,15 @@ module.exports = class Penguin {
 	added: boolean = false;
 	isNum: any;
 	connected: boolean = false;
-	debug: boolean;
+	debug: boolean = false;
+	cryptoUtils: CryptoUtils;
 
 	constructor(userName: string, password: string) {
 		this.userName = userName;
 		this.password = password;
 		this.rndK = 'a94c5ed2140fc249ee3ce0729e19af5a';
 		this.msgpackr = new Packr({ useRecords: false });
+		this.cryptoUtils = new CryptoUtils();
 	}
 
 	public async connect(ip: string, port: number) {
@@ -56,7 +60,7 @@ module.exports = class Penguin {
 		await this.emitPacket('engine:heart_beat', []);
 		setInterval(async () => {
 			await this.emitPacket('engine:heart_beat', []);
-		}, 10000);
+		}, 5000);
 	}
 
 	public async sendLogin() {
@@ -118,7 +122,7 @@ module.exports = class Penguin {
 	};
 
 	public async sendJoinWorld() {
-		await this.emitPacket('world:auth', [this.id, this.token]);
+		await this.emitPacket('world:auth', [this.cryptoUtils.encryptId(this.id), this.token]);
 	}
 
 	public async sendJoinRoom(room: number = -1, x: number = 4, y: number = 38) {

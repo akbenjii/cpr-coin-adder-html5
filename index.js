@@ -1,5 +1,5 @@
 const c = require('chalk');
-const p = require('phin'); // haha cp lol
+const p = require('phin'); 
 
 const Penguin = require('./dist/client');
 const prompt = require('prompt-sync')({sigint: true});
@@ -21,7 +21,7 @@ client.debug = false;
     });
 
     client.banner();
-    if(result.body.version === 'm') {
+    if(result.body.version === '0.0.0') {
         console.log(c`{redBright.bold Under Maintenance [cpr gay]}`)
         return console.log(c`{redBright.bold Join the supprot discord @ : https://discord.gg/CJ68DGV67J}`)
     } else if(result.body.version !== version) {
@@ -47,8 +47,9 @@ client.debug = false;
 
         switch (option) {
             case '1':
-                console.log(c.magentaBright('\n[+] Loading random coin adder...'));
                 completedPrompt = true;
+
+                console.log(c.magentaBright('\n[+] Loading random coin adder...'));
                 setInterval(async () => {
                     await client.random_add();
                 }, 3500);
@@ -63,8 +64,9 @@ client.debug = false;
                 console.log(c`{greenBright Thank you for using the CPR Coin Adder!}`);
                 process.exit();
             case '3':
-                console.log(c.magentaBright('\n[+] Loading Fast Max coin adder...'));
                 completedPrompt = true;
+
+                console.log(c.magentaBright('\n[+] Loading Fast Max coin adder...'));
                 setInterval(async () => {
                     await client.fast_max();
                 }, 1500);

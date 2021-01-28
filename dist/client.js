@@ -42,6 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var chalk_1 = __importDefault(require("chalk"));
 var Md5_typescript_1 = require("Md5-typescript");
 var msgpackr_1 = require("msgpackr");
+var CryptoUtils_1 = __importDefault(require("../dist/CryptoUtils"));
 var ws_1 = __importDefault(require("ws"));
 module.exports = /** @class */ (function () {
     function Penguin(userName, password) {
@@ -49,10 +50,12 @@ module.exports = /** @class */ (function () {
         this.crumbs = {};
         this.added = false;
         this.connected = false;
+        this.debug = false;
         this.userName = userName;
         this.password = password;
         this.rndK = 'a94c5ed2140fc249ee3ce0729e19af5a';
         this.msgpackr = new msgpackr_1.Packr({ useRecords: false });
+        this.cryptoUtils = new CryptoUtils_1.default();
     }
     Penguin.prototype.connect = function (ip, port) {
         return __awaiter(this, void 0, void 0, function () {
@@ -105,14 +108,16 @@ module.exports = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.emitPacket('engine:heart_beat', [])];
                     case 1:
                         _a.sent();
-                        setInterval(function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.emitPacket('engine:heart_beat', [])];
-                                case 1:
-                                    _a.sent();
-                                    return [2 /*return*/];
-                            }
-                        }); }); }, 10000);
+                        setInterval(function () { return __awaiter(_this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, this.emitPacket('engine:heart_beat', [])];
+                                    case 1:
+                                        _a.sent();
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); }, 5000);
                         return [2 /*return*/];
                 }
             });
@@ -234,7 +239,7 @@ module.exports = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.emitPacket('world:auth', [this.id, this.token])];
+                    case 0: return [4 /*yield*/, this.emitPacket('world:auth', [this.cryptoUtils.encryptId(this.id), this.token])];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -395,10 +400,12 @@ module.exports = /** @class */ (function () {
         return new Promise(function (resolve) { return setTimeout(resolve, time); });
     };
     Penguin.prototype.waitFor = function (conditionFunction) {
-        var poll = function (resolve) { if (conditionFunction())
-            resolve();
-        else
-            setTimeout(function (_) { return poll(resolve); }, 400); };
+        var poll = function (resolve) {
+            if (conditionFunction())
+                resolve();
+            else
+                setTimeout(function (_) { return poll(resolve); }, 400);
+        };
         return new Promise(poll);
     };
     Penguin.prototype.banner = function () {

@@ -1,6 +1,6 @@
 {
   "name": "cpr-coin-adder-html5",
-  "version": "1.0.5",
+  "version": "0.0.0",
   "description": "add coins to your cpr account",
   "main": "index.js",
   "scripts": {
